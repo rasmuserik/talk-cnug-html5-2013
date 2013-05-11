@@ -31,9 +31,11 @@ teaching, and various talks. Read more on `rasmuserik.com` and follow `@rasmuser
 # Notes
 
 - Intro
+    - My background
 - Overview of HTML5
     - use content from opensourcedays talk
 - Concrete examples
+    - maybe build a predetermined app live
     - canvas
         - combigame
             - also used for card-games!
@@ -45,9 +47,15 @@ teaching, and various talks. Read more on `rasmuserik.com` and follow `@rasmuser
         - bibgraph, d3 - internal demo
     - css transition, (transform)
         - slides for presentation
+    - history
+        - url of the slides
     - microdata
         - linked data intro
         - add microdata to solsort.com etc.
+    - integer arrays 
+        - emscripten example
+    - video 
+        - example play video of unreal in browser
     - evt. sound
         - update notescore
 - Outro
@@ -56,3 +64,4 @@ teaching, and various talks. Read more on `rasmuserik.com` and follow `@rasmuser
 
 Preparation
 - html5.solsort.com - collection of presentations...
+- timer in slides
