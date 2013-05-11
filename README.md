@@ -1,4 +1,4 @@
-# HTML5 - a developer perspective
+# ![logo](https://solsort.com/_logo.png) HTML5 - a developer perspective
  
 Presentation at http://cnug.dk/, 2013 May 22.
 
