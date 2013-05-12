@@ -44,6 +44,12 @@ teaching, and various talks. Read more on `rasmuserik.com` and follow `@rasmuser
             - localstorage - save image 
             - database api - save image in db
             - file-api - save file
+            - media-capture - capture image
+            - content-editable: description
+            - microdata: description meta
+            - transform+transition: view large
+            - fullscreen: view fullscreen
+            - webworkers: parallel image processing
     - canvas
         - combigame
             - also used for card-games!
