@@ -36,6 +36,14 @@ teaching, and various talks. Read more on `rasmuserik.com` and follow `@rasmuser
     - use content from opensourcedays talk
 - Concrete examples
     - maybe build a predetermined app live
+        - image manipulation program
+            - canvas - image blit: load image
+            - canvas - pixel access: negative
+            - typed arrays: convolution
+            - file-api - load file
+            - localstorage - save image 
+            - database api - save image in db
+            - file-api - save file
     - canvas
         - combigame
             - also used for card-games!
