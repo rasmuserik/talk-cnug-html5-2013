@@ -28,6 +28,7 @@ teaching, and various talks. Read more on `rasmuserik.com` and follow `@rasmuser
 ### When 
 22th May 2013 at 7 pm.
 
+            - drag-n-drop: open file with drag
 # Notes
 
 - Intro
@@ -37,18 +38,19 @@ teaching, and various talks. Read more on `rasmuserik.com` and follow `@rasmuser
 - Concrete examples
     - maybe build a predetermined app live
         - image manipulation program
-            - canvas - image blit: load image
-            - canvas - pixel access: negative
-            - typed arrays: convolution
-            - file-api - load file
+            - √canvas - image blit: load image
+            - √canvas - pixel access: negative
+            - √drag-n-drop: open file with drag
+            - (file-api - load file/save file)
             - localstorage - save image 
             - database api - save image in db
-            - file-api - save file
             - media-capture - capture image
+            - video
             - content-editable: description
             - microdata: description meta
             - transform+transition: view large
             - fullscreen: view fullscreen
+            - typed arrays: convolution
             - webworkers: parallel image processing
     - canvas
         - combigame
@@ -74,8 +76,9 @@ teaching, and various talks. Read more on `rasmuserik.com` and follow `@rasmuser
         - update notescore
 - Outro
 
-----
+# TODO
 
-Preparation
+- choose image for demo
+- build presentation app
 - html5.solsort.com - collection of presentations...
 - timer in slides

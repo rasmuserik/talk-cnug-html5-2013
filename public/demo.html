@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Demo</title>
+    <style>
+        #vid {
+            transition: all 2s;
+            -webkit-transition: all 2s;
+            -moz-transition: all 2s;
+        }
+    </style>
+  </head>
+  <body>
+      <!-- video -->
+      <video id="vid" controls autoplay>
+        <source src="sitatrailer.ogv" type="video/ogg">
+      </video>
+      <script>
+          function play() {
+              vid.play();
+              vid.currentTime = 70;
+          }
+      </script>
+      <button onclick="play();">play</button>
+      <hr>
+
+      <!-- Canvas -->
+      <canvas id="canvas" width=1000></canvas>
+      <script>
+          ctx = canvas.getContext("2d");
+          ctx.fillRect(0, 0, 10, 10);
+      </script>
+      <hr>
+
+      <!-- Canvas blit image/video/... -->
+      <script>
+          function videoShot() {
+              ctx.drawImage(vid, 0, 0);
+          }
+      </script>
+      <button onClick="videoShot()">videoShot</button>
+
+      <!-- Canvas pixel access -->
+      <script>
+          w = canvas.width;
+          h = canvas.height;
+          function invertRed() {
+              imageData = ctx.getImageData(0, 0, w, h);
+              data = imageData.data;
+              for(var i=0;i<data.length;i+=4) {
+                  data[i] = 255 - data[i];
+              }
+              ctx.putImageData(imageData, 0, 0);
+          }
+      </script>
+      <button onclick="invertRed()">invert red</button>
+
+      <!-- Video and getusermedia -->
+      <script>
+          function videoCapture() {
+            navigator.webkitGetUserMedia({video: true}, function(stream) {
+                vid.src = window.URL.createObjectURL(stream);
+            });
+          }
+      </script>
+      <button onclick="videoCapture()">Capture video</button>
+
+      <!-- Fullscreen api -->
+      <script>
+          function fullscreenVideo() { vid.webkitRequestFullScreen(); }
+      </script>
+      <button onclick="fullscreenVideo()">Fullscreen video</button>
+
+      <!-- drag'n'drop -->
+      <script>
+          function stopPropagation(e) {
+              e.preventDefault();
+              e.stopPropagation();
+          }
+          canvas.addEventListener("dragenter", stopPropagation)
+          canvas.addEventListener("dragover", stopPropagation)
+          canvas.addEventListener("drop", function(e) {
+              stopPropagation(e);
+              reader = new FileReader();
+              reader.onload = function(e) {
+                  var img = new Image()
+                  img.onload = function() {
+                      ctx.drawImage(img, 0, 0);
+                  }
+                  img.src = e.target.result;
+              }
+              reader.readAsDataURL(e.dataTransfer.files[0]);
+          });
+      </script>
+
+      <!-- content editable and microdata -->
+      <div itemscope itemtype="http://schema.org/Thing">
+      <div><strong>title:</strong><span itemprop="name" contenteditable>Untitled</span>
+      </div>
+      <div><strong>description: </strong><span itemprop="description" contenteditable>billede der forestiller noget...</span>
+      </div>
+      </div>
+
+      <!-- localstorage -->
+      <script>
+          function load() {
+              var img = new Image()
+              img.onload = function() {
+                  ctx.drawImage(img, 0, 0);
+              }
+              img.src = localStorage.getItem("image");
+          }
+          function save() {
+              localStorage.setItem("image", canvas.toDataURL("image/jpeg"));
+          }
+      </script>
+      <button onclick="save()">save</button><button onclick="load()">load</button>
+
+
+      <!-- indexedDB -->
+      <!-- NB: https://github.com/axemclion/IndexedDBShim for webkit -->
+      <!-- webworkers, typed array -->
+      <!-- transform + transition -->
+
+  </body>
+</html>
