@@ -1,126 +1,77 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Demo</title>
-    <style>
-        #vid {
-            transition: all 2s;
-            -webkit-transition: all 2s;
-            -moz-transition: all 2s;
-        }
-    </style>
-  </head>
-  <body>
-      <!-- video -->
-      <video id="vid" controls autoplay loop>
-        <source src="demo.ogv" type="video/ogg">
-      </video>
-      <script>
-          function play() {
-              vid.play();
-              vid.currentTime = 5;
-          }
-      </script>
-      <button onclick="play();">play</button>
-      <hr>
-
-      <!-- Canvas -->
-      <canvas id="canvas" width=1000></canvas>
-      <script>
-          ctx = canvas.getContext("2d");
-          ctx.fillRect(0, 0, 10, 10);
-      </script>
-      <hr>
-
-      <!-- Canvas blit image/video/... -->
-      <script>
-          function videoShot() {
-              ctx.drawImage(vid, 0, 0);
-          }
-      </script>
-      <button onClick="videoShot()">videoShot</button>
-
-      <!-- Canvas pixel access -->
-      <script>
-          w = canvas.width;
-          h = canvas.height;
-          function invertRed() {
-              imageData = ctx.getImageData(0, 0, w, h);
-              data = imageData.data;
-              for(var i=0;i<data.length;i+=4) {
-                  data[i] = 255 - data[i];
-              }
-              ctx.putImageData(imageData, 0, 0);
-          }
-      </script>
-      <button onclick="invertRed()">invert red</button>
-
-      <!-- Video and getusermedia -->
-      <script>
-          function videoCapture() {
-            navigator.webkitGetUserMedia({video: true}, function(stream) {
-                vid.src = window.URL.createObjectURL(stream);
-            });
-          }
-      </script>
-      <button onclick="videoCapture()">Capture video</button>
-
-      <!-- Fullscreen api -->
-      <script>
-          function fullscreenVideo() { vid.webkitRequestFullScreen(); }
-      </script>
-      <button onclick="fullscreenVideo()">Fullscreen video</button>
-
-      <!-- drag'n'drop -->
-      <script>
-          function stopPropagation(e) {
-              e.preventDefault();
-              e.stopPropagation();
-          }
-          canvas.addEventListener("dragenter", stopPropagation)
-          canvas.addEventListener("dragover", stopPropagation)
-          canvas.addEventListener("drop", function(e) {
-              stopPropagation(e);
-              reader = new FileReader();
-              reader.onload = function(e) {
-                  var img = new Image()
-                  img.onload = function() {
-                      ctx.drawImage(img, 0, 0);
-                  }
-                  img.src = e.target.result;
-              }
-              reader.readAsDataURL(e.dataTransfer.files[0]);
-          });
-      </script>
-
-      <!-- content editable and microdata -->
-      <div itemscope itemtype="http://schema.org/Thing">
-      <div><strong>title:</strong><span itemprop="name" contenteditable>Untitled</span>
-      </div>
-      <div><strong>description: </strong><span itemprop="description" contenteditable>billede der forestiller noget...</span>
-      </div>
-      </div>
-
-      <!-- localstorage -->
-      <script>
-          function load() {
-              var img = new Image()
-              img.onload = function() {
-                  ctx.drawImage(img, 0, 0);
-              }
-              img.src = localStorage.getItem("image");
-          }
-          function save() {
-              localStorage.setItem("image", canvas.toDataURL("image/jpeg"));
-          }
-      </script>
-      <button onclick="save()">save</button><button onclick="load()">load</button>
-
-
-      <!-- indexedDB -->
-      <!-- NB: https://github.com/axemclion/IndexedDBShim for webkit -->
-      <!-- webworkers, typed array -->
-      <!-- transform + transition -->
-
-  </body>
+    <head>
+        <title></title>
+        <style>
+            .free { 
+                position: absolute; 
+                top: 10px; 
+                width: 600px; 
+                -webkit-transition: all 2s;
+                -webkit-box-shadow: 5px 5px 10px 0 black;
+            }
+            .left { left: 10px; }
+            .right { left: 620px; width: 120px; }
+            .buttons { position: absolute; top: 100px; left: 630px; width: 100px; }
+        </style>
+    </head>
+    <body>
+        <video src=demo.ogv class="free right" id=video autoplay controls loop>
+        </video>
+        <canvas id=canvas class="free left" width=600 height=200>
+        </canvas>
+        <div class=buttons>
+            <button onclick="swapPos()">swap</button>
+            <button onclick="shot()">shot</button>
+            <button onclick="capture()">capture</button>
+            <button onclick="invertRed()">invertRed</button>
+            <button onclick="save()">save</button>
+            <button onclick="load()">load</button>
+            <button onclick="fullscreen()">fullscreen</button>
+            <div itemscope itemtype="http://schema.org/Thing">
+                <div>Title: <span itemprop=name contenteditable>Untitled</span></div>
+                <div>Author: <span itemprop=description contenteditable>Some descriptive text...</span></div>
+            </div>
+        </div>
+        <script>
+            swapPos = function() {
+                var t =  video.className;
+                video.className = canvas.className;
+                canvas.className = t;
+            }
+            var ctx = canvas.getContext("2d");
+            shot = function() {
+                ctx.drawImage(video, 0, 0);
+            }
+            invertRed = function() {
+                var imData = ctx.getImageData(0,0,600,200);
+                var dataView = imData.data;
+                for(var i = 0; i < dataView.length; i += 4) {
+                    dataView[i] = 255 - dataView[i];
+                }
+                ctx.putImageData(imData,0,0);
+            }
+            capture = function() {
+                navigator.webkitGetUserMedia({video: true},
+                    function(stream) {
+                        video.src = URL.createObjectURL(stream);
+                    }, function(err) {
+                    });
+            }
+            save = function() {
+                localStorage.setItem("image", canvas.toDataURL("text/jpeg"));
+            }
+            load = function() {
+                var url = localStorage.getItem("image");
+                var img = new Image()
+                img.onload = function() {
+                    ctx.drawImage(img,0,0);
+                }
+                img.src = url;
+            }
+            fullscreen = function() {
+                video.webkitRequestFullScreen();
+            }
+        </script>
+    </body>
 </html>

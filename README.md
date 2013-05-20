@@ -60,7 +60,6 @@ teaching, and various talks. Read more on `rasmuserik.com` and follow `@rasmuser
         - localstorage
         - semantic markup, content editable
         - fullscreen, ie. canvas
-        - (transitions - swap video and image, evt. drop shadow)
     - Realworld examples
         - Languages, coffeescript: legoland-billund-resort
         - Libraries, d3.js: dragimation
