@@ -16,10 +16,11 @@
         </style>
     </head>
     <body>
+        <video class="free left" id=video autoplay controls loop>
+            <source src="demo.ogv" type="video/ogg">
+        </video>
         <canvas id=canvas class="free right" width=640 height=480>
         </canvas>
-        <video src=demo.ogv class="free left" id=video autoplay controls loop>
-        </video>
         <div class=buttons>
             <button onclick="swapPos()">swap</button>
             <button onclick="shot()">shot</button>
