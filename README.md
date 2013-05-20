@@ -4,7 +4,7 @@ Presentation at http://cnug.dk/, 2013 May 22.
 
 This repository contains preliminary notes, slides and code for the talk.
 
-# Description
+## Description
 
 HTML5 – a developer perspective
 Posted on April 15, 2013 by Anders Lybecker 
@@ -28,57 +28,50 @@ teaching, and various talks. Read more on `rasmuserik.com` and follow `@rasmuser
 ### When 
 22th May 2013 at 7 pm.
 
-            - drag-n-drop: open file with drag
-# Notes
+## Outline
 
-- Intro
-    - My background
-- Overview of HTML5
-    - use content from opensourcedays talk
+- Introduction
+    - Point of view of talk
+        - my background
+        - what is HTML5
+    - Table of contents
+        - Overview of the 
+- State and overview of the APIs
+    - GUI
+        - Graphics: canvas, svg, webgl
+        - Media: audio, video, media-capture, webrtc
+        - CSS3: media queries, animations, shadow, 3d-transform, fonts...
+        - Input: touch, device-orientation, geolocation
+        - Misc: MathML, fullscreen, contenteditable, drag-n-drop
+    - System
+        - Storage: localStorage, websql, indexeddb, fileapi
+        - Network: websockets, xhr2(cors, binary), protocol handlers, webrtc
+        - Code execution: webworkers, cross-document-messaging, offline-apps, async script loading
+        - Misc: typed arrays, history api, microdata/semantic-web
 - Concrete examples
-    - maybe build a predetermined app live
-        - image manipulation program
-            - √canvas - image blit: load image
-            - √canvas - pixel access: negative
-            - √drag-n-drop: open file with drag
-            - (file-api - load file/save file)
-            - localstorage - save image 
-            - database api - save image in db
-            - media-capture - capture image
-            - video
-            - content-editable: description
-            - microdata: description meta
-            - transform+transition: view large
-            - fullscreen: view fullscreen
-            - typed arrays: convolution
-            - webworkers: parallel image processing
-    - canvas
-        - combigame
-            - also used for card-games!
-        - blobshot
-    - transform, (canvas, touch-events)
-        - dragimation 
-        - story: designers, HTML5 to the rescue, math, 
-    - svg
-        - bibgraph, d3 - internal demo
-    - css transition, (transform)
-        - slides for presentation
-    - history
-        - url of the slides
-    - microdata
-        - linked data intro
-        - add microdata to solsort.com etc.
-    - integer arrays 
-        - emscripten example
-    - video 
-        - example play video of unreal in browser
-    - evt. sound
-        - update notescore
-- Outro
+    - Intro
+        - Disclaimer, pure html5+js, no abstraction layer, demonstration code, not best practises, only chrome
+    - HTML5 platform live code examples
+        - Architecture of html5 document (doctype+parser(ie.utf8 no quotes))
+        - Video 
+        - css3 - box-shadow, round corners
+        - Canvas (pixel access, typed arrays)
+        - Video capture
+        - localstorage
+        - semantic markup, content editable
+        - fullscreen, ie. canvas
+        - (transitions - swap video and image, evt. drop shadow)
+    - Realworld examples
+        - Languages, coffeescript: legoland-billund-resort
+        - Libraries, d3.js: dragimation
+        - Not just browser, - ie. canvas server-side, physical card games made with HTML5!
+        - Emscripten Unreal-engine + hello world: Unreal Engine (C++, 1+MLoC, 2013, ported in 4 days!, https://www.youtube.com/watch?v=MyAcKgr6mZU, emscripten, asm.js)
 
-# TODO
 
-- choose image for demo
-- build presentation app
-- html5.solsort.com - collection of presentations...
+## TODO
+
+- write slides from outline
+- runtime-environment - simple web-server
+- practise presentation 
 - timer in slides
+- html5.solsort.com - collection of presentations.

@@ -12,13 +12,13 @@
   </head>
   <body>
       <!-- video -->
-      <video id="vid" controls autoplay>
-        <source src="sitatrailer.ogv" type="video/ogg">
+      <video id="vid" controls autoplay loop>
+        <source src="demo.ogv" type="video/ogg">
       </video>
       <script>
           function play() {
               vid.play();
-              vid.currentTime = 70;
+              vid.currentTime = 5;
           }
       </script>
       <button onclick="play();">play</button>
