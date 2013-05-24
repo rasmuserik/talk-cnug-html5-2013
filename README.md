@@ -1,4 +1,12 @@
-# ![logo](https://solsort.com/_logo.png) HTML5 - a developer perspective
+# ![logo](https://solsort.com/_logo.png)  Deprecated repository, see https://github.com/rasmuserik/talk-html5-2013 instead !
+
+
+Slides are online via http://html5.solsort.com/. 
+
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+# HTML5 - a developer perspective
  
 Presentation at http://cnug.dk/, 2013 May 22.
 
